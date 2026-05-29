@@ -1,0 +1,274 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .header { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem; margin-bottom: 1rem; }
+  .brand-row { display: flex; align-items: center; gap: 14px; margin-bottom: 0.75rem; }
+  .brand-icon { width: 48px; height: 48px; border-radius: var(--border-radius-md); background: #E74C3C; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .brand-icon i { font-size: 24px; color: #fff; }
+  .brand-name { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+  .brand-sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
+  .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-top: 1rem; }
+  .offer-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.75rem 1rem; border: 0.5px solid var(--color-border-tertiary); }
+  .offer-title { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .offer-val { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .offer-card.highlight { border: 2px solid var(--color-border-success); }
+  .offer-card.highlight .offer-val { color: var(--color-text-success); }
+  .offer-card.new-launch { border: 2px solid var(--color-border-info); }
+  .offer-card.new-launch .offer-val { color: var(--color-text-info); }
+
+  .policy-strip { background: var(--color-background-warning); border: 0.5px solid var(--color-border-warning); border-radius: var(--border-radius-md); padding: 0.65rem 1rem; margin-bottom: 1rem; font-size: 13px; color: var(--color-text-warning); display: flex; align-items: flex-start; gap: 8px; }
+  .policy-strip i { margin-top: 1px; flex-shrink: 0; }
+
+  .replace-strip { background: var(--color-background-info); border: 0.5px solid var(--color-border-info); border-radius: var(--border-radius-md); padding: 0.65rem 1rem; margin-bottom: 1rem; font-size: 13px; color: var(--color-text-info); display: flex; align-items: flex-start; gap: 8px; }
+  .replace-strip i { margin-top: 1px; flex-shrink: 0; }
+
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .filter-btn { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: 999px; padding: 5px 14px; font-size: 13px; color: var(--color-text-secondary); cursor: pointer; transition: all 0.15s; }
+  .filter-btn:hover { background: var(--color-background-primary); color: var(--color-text-primary); }
+  .filter-btn.active { background: #E74C3C; border-color: #E74C3C; color: #fff; font-weight: 500; }
+
+  .category-section { margin-bottom: 1.25rem; }
+  .cat-header { display: flex; align-items: center; gap: 10px; padding: 0.5rem 0; margin-bottom: 0.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .cat-icon { font-size: 18px; color: #E74C3C; }
+  .cat-name { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+  .cat-count { font-size: 12px; color: var(--color-text-secondary); margin-left: auto; }
+
+  .product-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .product-table th { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 8px; text-align: left; border-bottom: 0.5px solid var(--color-border-tertiary); font-weight: 400; }
+  .product-table th:last-child { text-align: right; }
+  .product-table td { font-size: 13px; color: var(--color-text-primary); padding: 7px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: middle; }
+  .product-table td:last-child { text-align: right; font-weight: 500; }
+  .product-table tr:last-child td { border-bottom: none; }
+  .product-table tr:hover td { background: var(--color-background-secondary); }
+
+  .price { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .note-badge { font-size: 11px; color: var(--color-text-secondary); display: block; margin-top: 2px; }
+  .new-badge { background: var(--color-background-info); color: var(--color-text-info); font-size: 10px; padding: 2px 7px; border-radius: 999px; margin-left: 6px; display: inline-block; vertical-align: middle; }
+
+  .footer { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 0.75rem 1rem; margin-top: 1rem; font-size: 12px; color: var(--color-text-secondary); display: flex; align-items: center; gap: 8px; }
+  .footer i { font-size: 14px; }
+
+  @media (max-width: 500px) {
+    .product-table th:nth-child(2), .product-table td:nth-child(2) { display: none; }
+  }
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Divya Foods product price list for café and restaurant partners</h2>
+
+<div class="header">
+  <div class="brand-row">
+    <div class="brand-icon"><i class="ti ti-pizza" aria-hidden="true"></i></div>
+    <div>
+      <div class="brand-name">Divya Foods</div>
+      <div class="brand-sub">Nashik Road, Nashik 422006 &nbsp;·&nbsp; B2B Price List</div>
+    </div>
+  </div>
+  <div class="offer-grid">
+    <div class="offer-card">
+      <div class="offer-title"><i class="ti ti-shopping-cart" aria-hidden="true" style="font-size:12px;margin-right:4px;"></i>Min order value</div>
+      <div class="offer-val">₹3,000 MOQ</div>
+    </div>
+    <div class="offer-card">
+      <div class="offer-title"><i class="ti ti-truck" aria-hidden="true" style="font-size:12px;margin-right:4px;"></i>Delivery</div>
+      <div class="offer-val">₹80 below ₹6,000</div>
+    </div>
+    <div class="offer-card highlight">
+      <div class="offer-title"><i class="ti ti-star" aria-hidden="true" style="font-size:12px;margin-right:4px;"></i>Free delivery above</div>
+      <div class="offer-val">₹6,000+ order</div>
+    </div>
+    <div class="offer-card highlight">
+      <div class="offer-title"><i class="ti ti-discount" aria-hidden="true" style="font-size:12px;margin-right:4px;"></i>Order ₹6,000–₹9,999</div>
+      <div class="offer-val">5% off + free delivery</div>
+    </div>
+    <div class="offer-card highlight">
+      <div class="offer-title"><i class="ti ti-discount-2" aria-hidden="true" style="font-size:12px;margin-right:4px;"></i>Order ₹10,000–₹14,999</div>
+      <div class="offer-val">8% off + free delivery</div>
+    </div>
+    <div class="offer-card highlight">
+      <div class="offer-title"><i class="ti ti-crown" aria-hidden="true" style="font-size:12px;margin-right:4px;"></i>Order ₹15,000+</div>
+      <div class="offer-val">10% off + free delivery</div>
+    </div>
+    <div class="offer-card new-launch">
+      <div class="offer-title"><i class="ti ti-gift" aria-hidden="true" style="font-size:12px;margin-right:4px;"></i>New launch trial offer</div>
+      <div class="offer-val">5 pcs Korean Pizza free on ₹4,000+ first order</div>
+    </div>
+    <div class="offer-card new-launch">
+      <div class="offer-title"><i class="ti ti-repeat" aria-hidden="true" style="font-size:12px;margin-right:4px;"></i>Loyalty reward</div>
+      <div class="offer-val">Free delivery on your 5th order</div>
+    </div>
+  </div>
+</div>
+
+<div class="replace-strip">
+  <i class="ti ti-refresh" aria-hidden="true"></i>
+  <span><strong>Unsold stock replacement policy:</strong> If any product quantity remains fully unsold after 4 weekly orders within a month, it can be replaced with another product of your choice. Please discuss with your sales representative.</span>
+</div>
+
+<div class="policy-strip">
+  <i class="ti ti-info-circle" aria-hidden="true"></i>
+  <span><strong>Shelf life note:</strong> Most products carry an expiry of 1 month to 6 months. Please confirm exact shelf life with your sales representative before ordering.</span>
+</div>
+
+<div class="filter-row" id="filterRow">
+  <button class="filter-btn active" onclick="filterCat('all')">All categories</button>
+  <button class="filter-btn" onclick="filterCat('samosa')">Samosa</button>
+  <button class="filter-btn" onclick="filterCat('pizza')">Pizza</button>
+  <button class="filter-btn" onclick="filterCat('tikki')">Tikkis / Patty</button>
+  <button class="filter-btn" onclick="filterCat('mumbai')">Mumbai Snacks</button>
+  <button class="filter-btn" onclick="filterCat('momos')">Momos</button>
+  <button class="filter-btn" onclick="filterCat('dessert')">Desserts</button>
+  <button class="filter-btn" onclick="filterCat('chutney')">Chutneys</button>
+  <button class="filter-btn" onclick="filterCat('powder')">Powders</button>
+  <button class="filter-btn" onclick="filterCat('bread')">Garlic Bread</button>
+</div>
+
+<div id="catalogBody"></div>
+
+<div class="footer">
+  <i class="ti ti-phone" aria-hidden="true"></i>
+  <span>All prices in INR. Prices are subject to change. Contact your Divya Foods sales representative for current availability and bulk pricing.</span>
+</div>
+
+<script>
+const catalog = [
+  {
+    id: 'samosa', icon: 'ti-triangle', label: 'Samosa', items: [
+      { name: 'Punjabi Samosa', unit: 'per piece', price: 15.4, note: 'Approx 75–80g each' },
+      { name: 'Masala Samosa', unit: 'per piece', price: 15.4, note: '' },
+    ]
+  },
+  {
+    id: 'pizza', icon: 'ti-pizza', label: 'Pizza — 7 Inches', items: [
+      { name: 'Margherita Pizza', unit: 'per piece', price: 91, note: 'Toppings (chicken etc.) can be added' },
+      { name: 'Veg Pizza', unit: 'per piece', price: 91, note: '' },
+      { name: 'Corn Pizza', unit: 'per piece', price: 91, note: '' },
+      { name: 'Paneer Pizza', unit: 'per piece', price: 98, note: 'Ready with toppings & cheese' },
+      { name: 'Italian Pizza', unit: 'per piece', price: 98, note: 'Ready with toppings & cheese' },
+      { name: 'Paneer Tikka Pizza', unit: 'per piece', price: 105, note: 'Ready with toppings & cheese' },
+    ]
+  },
+  {
+    id: 'pizza', icon: 'ti-pizza', label: 'Pizza — 8 Inches', items: [
+      { name: 'Margherita Pizza', unit: 'per piece', price: 98, note: 'Toppings (chicken etc.) can be added' },
+      { name: 'Veg Pizza', unit: 'per piece', price: 105, note: '' },
+      { name: 'Corn Pizza', unit: 'per piece', price: 105, note: '' },
+      { name: 'Paneer Pizza', unit: 'per piece', price: 110.6, note: 'Ready with toppings & cheese' },
+      { name: 'Paneer Tikka Pizza', unit: 'per piece', price: 110.6, note: 'Ready with toppings & cheese' },
+      { name: 'Italian Pizza', unit: 'per piece', price: 112, note: '' },
+      { name: 'Thin Crust Pizza', unit: 'per piece', price: 105, note: 'Toppings (chicken, paneer etc.) can be added' },
+      { name: 'Korean Margherita Pizza', unit: 'per piece', price: 77, note: 'Korean sauce, plank shape — newly launched', isNew: true },
+    ]
+  },
+  {
+    id: 'tikki', icon: 'ti-burger', label: 'Tikkis / Patty', items: [
+      { name: 'Paneer Masala Tikki — Jumbo / Maharaja', unit: 'per piece', price: 29.4, note: 'Approx 60g' },
+      { name: 'Burger Patty (85g)', unit: 'per piece', price: 20.3, note: 'Approx 85g' },
+      { name: 'Corn Tikki / Makka Palak', unit: 'per piece', price: 18.9, note: 'Approx 60g' },
+      { name: 'Burger Patty (60g)', unit: 'per piece', price: 15.4, note: 'Approx 60g' },
+      { name: 'Spicy Tikki', unit: 'per piece', price: 15.4, note: 'Approx 60g' },
+      { name: 'Square Shape Burger / Cutlet', unit: 'per piece', price: 17.5, note: 'Approx 60g' },
+    ]
+  },
+  {
+    id: 'mumbai', icon: 'ti-building-store', label: 'Mumbai Snacks', items: [
+      { name: 'Moong Bhaje', unit: 'per kg', price: 294, note: '1 kg pack' },
+      { name: 'Vada (42g)', unit: 'per piece', price: 8.4, note: 'Approx 40–42g per vada' },
+      { name: 'Vada (50g)', unit: 'per piece', price: 11.2, note: 'Approx 50g per vada' },
+      { name: 'Crispy Vada (42g)', unit: 'per piece', price: 8.68, note: 'Bread-coated vadapav masala' },
+      { name: 'Crispy Vada (52g)', unit: 'per piece', price: 11.2, note: 'Bread-coated vadapav masala' },
+    ]
+  },
+  {
+    id: 'momos', icon: 'ti-bowl', label: 'Momos', items: [
+      { name: 'Veg Momos', unit: 'per piece', price: 8.82, note: '25g per piece' },
+      { name: 'Paneer Momos', unit: 'per piece', price: 11.9, note: '25g per piece' },
+    ]
+  },
+  {
+    id: 'dessert', icon: 'ti-ice-cream', label: 'Desserts', items: [
+      { name: 'Chocolaya Cake', unit: 'per piece', price: 42, note: 'Approx 55g per piece' },
+      { name: 'Brownie', unit: 'per 500g', price: 273, note: '60–80g per serving' },
+      { name: 'Thick Shake Mix', unit: 'per 5kg', price: 868, note: 'Approx 35 glasses of 200ml each' },
+    ]
+  },
+  {
+    id: 'chutney', icon: 'ti-droplet', label: 'Chutneys / Sauces', items: [
+      { name: 'Farali Green Chutney', unit: 'per 900g', price: 392, note: 'Serve with Sabudana Wada' },
+      { name: 'Imli Chutney', unit: 'per litre', price: 91, note: 'Serve with Vada & Sandwich' },
+      { name: 'Lasun Chutney', unit: 'per kg', price: 294, note: 'Serve with Vada' },
+      { name: 'Spicy Pudina Chutney', unit: 'per 100g', price: 42, note: 'Vada, sandwich, rolls, samosa' },
+      { name: 'Pudina Chutney (Frozen)', unit: 'per 250g', price: 91, note: 'Vada, sandwich, rolls, samosa' },
+    ]
+  },
+  {
+    id: 'powder', icon: 'ti-salt', label: 'Flavour Powders', items: [
+      { name: 'Makhni Powder', unit: 'per 50g', price: 58.8, note: 'Mix in 1kg mayonnaise' },
+      { name: 'Tandoori Powder', unit: 'per 50g', price: 58.8, note: '' },
+      { name: 'Magic Masala Powder', unit: 'per 50g', price: 58.8, note: '' },
+      { name: 'Cream & Onion Powder', unit: 'per 50g', price: 58.8, note: '' },
+      { name: 'Peri Peri Powder', unit: 'per 50g', price: 58.8, note: '' },
+      { name: 'Flaming Hot Powder', unit: 'per 50g', price: 58.8, note: '' },
+      { name: 'Barbeque Powder', unit: 'per 50g', price: 58.8, note: '' },
+    ]
+  },
+  {
+    id: 'bread', icon: 'ti-bread', label: 'Garlic Bread / Loaf', items: [
+      { name: 'Panini Loaf', unit: 'per piece', price: 17.5, note: 'Ready with toppings & cheese' },
+      { name: 'Plain Garlic Bread', unit: 'per 2 pcs', price: 18.9, note: '' },
+      { name: 'Cheese Garlic Bread', unit: 'per 2 pcs', price: 32.2, note: '' },
+      { name: 'Cheese Chilly Toast', unit: 'per 2 pcs', price: 39.2, note: '' },
+    ]
+  },
+];
+
+let active = 'all';
+
+function filterCat(id) {
+  active = id;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  render();
+}
+
+function render() {
+  const body = document.getElementById('catalogBody');
+  body.innerHTML = '';
+  const visible = active === 'all' ? catalog : catalog.filter(c => c.id === active);
+  visible.forEach(cat => {
+    const sec = document.createElement('div');
+    sec.className = 'category-section';
+    sec.innerHTML = `
+      <div class="cat-header">
+        <i class="ti ${cat.icon} cat-icon" aria-hidden="true"></i>
+        <span class="cat-name">${cat.label}</span>
+        <span class="cat-count">${cat.items.length} products</span>
+      </div>
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th style="width:44%">Product</th>
+            <th style="width:24%">Unit</th>
+            <th style="width:32%">Price (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${cat.items.map(item => `
+            <tr>
+              <td>
+                ${item.name}${item.isNew ? '<span class="new-badge">New</span>' : ''}
+                ${item.note ? `<span class="note-badge">${item.note}</span>` : ''}
+              </td>
+              <td style="color:var(--color-text-secondary)">${item.unit}</td>
+              <td class="price">₹${item.price.toFixed(2)}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+    body.appendChild(sec);
+  });
+}
+
+render();
+</script>
