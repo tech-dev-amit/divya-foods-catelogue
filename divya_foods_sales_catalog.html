@@ -1,0 +1,810 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  --pewter: #e2e6e7;
+  --champagne: #e4d4c8;
+  --brown: #d0b49f;
+  --black: #201a1e;
+  --brown-dark: #7a5c45;
+  --brown-mid: #a87d62;
+  --champagne-dark: #b89b88;
+  --pewter-dark: #8fa0a4;
+  --surface: #f0ece8;
+  --card-bg: #faf7f4;
+  --green-profit: #3a6b3a;
+  --green-bg: #e8f2e8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.wrap {
+  background: var(--pewter);
+  font-family: 'Jost', sans-serif;
+  color: var(--black);
+  max-width: 920px;
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+.header {
+  background: var(--black);
+  padding: 40px 36px 28px;
+  text-align: center;
+  position: relative;
+}
+
+.header-rule {
+  width: 80px;
+  height: 1px;
+  background: var(--brown);
+  margin: 0 auto 16px;
+}
+
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--champagne);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand-sub {
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--brown);
+  text-transform: uppercase;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.brand-addr {
+  font-size: 12px;
+  color: var(--champagne-dark);
+  margin-top: 12px;
+  font-weight: 300;
+}
+
+.header-rule-bottom {
+  width: 80px;
+  height: 1px;
+  background: var(--brown);
+  margin: 18px auto 0;
+}
+
+.offers-bar {
+  background: var(--champagne);
+  border-bottom: 1px solid var(--brown);
+  padding: 14px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.offer-chip {
+  background: var(--black);
+  color: var(--champagne);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.offer-chip .tag {
+  background: var(--brown);
+  color: var(--black);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 32px 28px 12px;
+}
+
+.section-head::before, .section-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--brown);
+  opacity: 0.5;
+}
+
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--brown-dark);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.grid {
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--brown);
+  border-left: 3px solid var(--brown-mid);
+  border-radius: 8px;
+  padding: 14px 16px 12px;
+  position: relative;
+}
+
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+
+.card-note {
+  font-size: 10px;
+  color: var(--brown-mid);
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.pack-tag {
+  display: inline-block;
+  background: var(--champagne);
+  border: 1px solid var(--brown);
+  color: var(--brown-dark);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--champagne);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.buy-block .lbl {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pewter-dark);
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.buy-block .amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1;
+}
+
+.buy-block .unit {
+  font-size: 10px;
+  color: var(--brown-mid);
+  display: block;
+  margin-top: 1px;
+}
+
+.cafe-block {
+  text-align: right;
+}
+
+.cafe-block .lbl {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pewter-dark);
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.cafe-block .amt {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brown-dark);
+}
+
+.cafe-block .profit {
+  font-size: 9px;
+  color: var(--green-profit);
+  background: var(--green-bg);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-top: 3px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.new-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--brown-mid);
+  color: var(--card-bg);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.footer {
+  margin: 32px 20px 0;
+  background: var(--black);
+  border-radius: 8px;
+  padding: 24px 28px;
+}
+
+.footer-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brown);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-style: italic;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.terms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.term {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.term-icon {
+  width: 30px;
+  height: 30px;
+  background: #2e2229;
+  border: 1px solid #3e3240;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--brown);
+  font-size: 14px;
+}
+
+.term-text strong {
+  display: block;
+  font-size: 11px;
+  color: var(--champagne);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.term-text span {
+  font-size: 10px;
+  color: var(--champagne-dark);
+  font-weight: 300;
+}
+
+.print-btn {
+  display: block;
+  margin: 20px auto 0;
+  background: var(--black);
+  color: var(--champagne);
+  border: 1px solid var(--brown);
+  border-radius: 6px;
+  padding: 10px 28px;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media print {
+  .print-btn { display: none; }
+}
+</style>
+
+<div class="wrap">
+
+  <div class="header">
+    <div class="header-rule"></div>
+    <div class="brand">Divya Foods</div>
+    <div class="brand-sub">Wholesale Partner Catalogue</div>
+    <div class="brand-addr">Nashik Road, Nashik 422006 &nbsp;&middot;&nbsp; For Cafés, Restaurants & Food Businesses</div>
+    <div class="header-rule-bottom"></div>
+  </div>
+
+  <div class="offers-bar">
+    <div class="offer-chip"><span class="tag">MOQ</span> Min. order ₹3,000</div>
+    <div class="offer-chip"><span class="tag">5% OFF</span> Above ₹6,000</div>
+    <div class="offer-chip"><span class="tag">8% OFF</span> Above ₹10,000</div>
+    <div class="offer-chip"><span class="tag">Free Delivery</span> Above ₹10,000</div>
+    <div class="offer-chip"><span class="tag">Trial</span> 5 pcs Korean Pizza free on 1st order ₹4,000+</div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Samosa</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Punjabi Samosa</div>
+      <div class="pack-tag">Pack of 10 pcs &middot; ~75–80g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹184</span><span class="unit">per pack of 10</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹40–50 / pc</span><div class="profit">↑ ₹20–30 profit / pc</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Masala Samosa</div>
+      <div class="pack-tag">Pack of 10 pcs &middot; ~75–80g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹184</span><span class="unit">per pack of 10</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹40–50 / pc</span><div class="profit">↑ ₹20–30 profit / pc</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Pizza — 7 Inches</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Margherita Pizza</div>
+      <div class="card-note">Toppings like chicken etc. can be added</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹109</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹150–180</span><div class="profit">↑ ₹40–70 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Veg Pizza</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹109</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹150–180</span><div class="profit">↑ ₹40–70 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Corn Pizza</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹109</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹150–180</span><div class="profit">↑ ₹40–70 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Paneer Pizza</div>
+      <div class="card-note">Ready with toppings &amp; cheese</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹117</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹170–200</span><div class="profit">↑ ₹50–80 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Italian Pizza</div>
+      <div class="card-note">Ready with toppings &amp; cheese</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹117</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹170–200</span><div class="profit">↑ ₹50–80 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Paneer Tikka Pizza</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹125</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹180–220</span><div class="profit">↑ ₹55–95 profit</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Pizza — 8 Inches</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Margherita Pizza</div>
+      <div class="card-note">Toppings like chicken etc. can be added</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹117</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹180–220</span><div class="profit">↑ ₹60–100 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Veg Pizza</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹125</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹190–230</span><div class="profit">↑ ₹65–105 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Corn Pizza</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹125</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹190–230</span><div class="profit">↑ ₹65–105 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Paneer Pizza</div>
+      <div class="card-note">Ready with toppings &amp; cheese</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹132</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹200–240</span><div class="profit">↑ ₹68–108 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Paneer Tikka Pizza</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹132</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹200–240</span><div class="profit">↑ ₹68–108 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Italian Pizza</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹134</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹200–240</span><div class="profit">↑ ₹66–106 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Thin Crust Pizza</div>
+      <div class="card-note">Chicken, paneer toppings possible</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹125</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹190–230</span><div class="profit">↑ ₹65–105 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="new-tag">New</div>
+      <div class="card-name">Korean Margherita Pizza</div>
+      <div class="card-note">Korean sauce &middot; plank shape &middot; 8 inch</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹92</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹150–180</span><div class="profit">↑ ₹58–88 profit</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Tikkis &amp; Patty</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Paneer Masala Tikki (Maharaja)</div>
+      <div class="pack-tag">Pack of 20 pcs &middot; ~60g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹700</span><span class="unit">per pack of 20</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹60–80 / pc</span><div class="profit">↑ ₹25–45 profit / pc</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Burger Patty (85g)</div>
+      <div class="pack-tag">Pack of 15 pcs &middot; ~85g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹364</span><span class="unit">per pack of 15</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹80–120 / burger</span><div class="profit">↑ ₹50–90 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Corn / Makka Palak Tikki</div>
+      <div class="pack-tag">Pack of 20 pcs &middot; ~60g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹450</span><span class="unit">per pack of 20</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹50–70 / pc</span><div class="profit">↑ ₹25–45 profit / pc</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Burger Patty (60g)</div>
+      <div class="pack-tag">Pack of 20 pcs &middot; ~60g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹367</span><span class="unit">per pack of 20</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹60–90 / burger</span><div class="profit">↑ ₹40–70 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Spicy Tikki</div>
+      <div class="pack-tag">Pack of 20 pcs &middot; ~60g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹367</span><span class="unit">per pack of 20</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹50–70 / pc</span><div class="profit">↑ ₹25–45 profit / pc</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Square Burger / Cutlet</div>
+      <div class="pack-tag">Pack of 20 pcs &middot; ~60g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹417</span><span class="unit">per pack of 20</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹70–100 / pc</span><div class="profit">↑ ₹35–65 profit / pc</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Mumbai Snacks</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Moong Bhaje</div>
+      <div class="pack-tag">1 kg pack</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹350</span><span class="unit">per kg</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹30–40 / serve</span><div class="profit">↑ ~20 serves / kg</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Vada (42g)</div>
+      <div class="pack-tag">Pack of 20 pcs</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹200</span><span class="unit">per pack of 20</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹25–35 / pc</span><div class="profit">↑ ₹15–25 profit / pc</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Vada (50g)</div>
+      <div class="pack-tag">Pack of 15 pcs</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹200</span><span class="unit">per pack of 15</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹30–40 / pc</span><div class="profit">↑ ₹17–27 profit / pc</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Crispy Vada (42g)</div>
+      <div class="card-note">Breadcoating on Vadapav masala</div>
+      <div class="pack-tag">Pack of 30 pcs</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹310</span><span class="unit">per pack of 30</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹25–35 / pc</span><div class="profit">↑ ₹15–25 profit / pc</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Crispy Vada (52g)</div>
+      <div class="card-note">Breadcoating on Vadapav masala</div>
+      <div class="pack-tag">Pack of 30 pcs</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹400</span><span class="unit">per pack of 30</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹30–40 / pc</span><div class="profit">↑ ₹16–26 profit / pc</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Momos</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Veg Momos</div>
+      <div class="pack-tag">Pack of 25 pcs &middot; 25g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹261</span><span class="unit">per pack of 25</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹80–120 / plate (6pc)</span><div class="profit">↑ ₹50–80 profit / plate</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Paneer Momos</div>
+      <div class="pack-tag">Pack of 25 pcs &middot; 25g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹355</span><span class="unit">per pack of 25</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹100–140 / plate (6pc)</span><div class="profit">↑ ₹60–90 profit / plate</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Desserts</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Chocolaya Cake</div>
+      <div class="pack-tag">Pack of 10 pcs &middot; ~55g each</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹500</span><span class="unit">per pack of 10</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹80–100 / pc</span><div class="profit">↑ ₹30–50 profit / pc</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Brownie</div>
+      <div class="pack-tag">500g pack &middot; ~7–8 serves</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹325</span><span class="unit">per 500g</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹70–90 / slice</span><div class="profit">↑ ₹30–50 profit / slice</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Thick Shake Mix</div>
+      <div class="pack-tag">5kg &middot; ~35 glasses of 200ml</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹1,034</span><span class="unit">per 5kg</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹80–120 / glass</span><div class="profit">↑ ₹50–90 profit / glass</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Chutneys &amp; Sauces</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Farali Green Chutney</div>
+      <div class="card-note">For Sabudana Wada · 900g</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹467</span><span class="unit">per 900g</span></div>
+        <div class="cafe-block"><span class="lbl">Café Add-on</span><span class="amt">₹10–15 / serve</span><div class="profit">↑ High margin add-on</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Imli Chutney</div>
+      <div class="card-note">For Vada &amp; Sandwich · 1 Litre</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹84</span><span class="unit">per litre</span></div>
+        <div class="cafe-block"><span class="lbl">Café Add-on</span><span class="amt">₹10–15 / serve</span><div class="profit">↑ Very high margin</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Lasun Chutney</div>
+      <div class="card-note">For Vada · 1 Kg</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹300</span><span class="unit">per kg</span></div>
+        <div class="cafe-block"><span class="lbl">Café Add-on</span><span class="amt">₹10–20 / serve</span><div class="profit">↑ 50+ servings / kg</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Spicy Pudina Chutney</div>
+      <div class="card-note">Vada, Sandwich, Rolls, Samosa · 100g</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹50</span><span class="unit">per 100g</span></div>
+        <div class="cafe-block"><span class="lbl">Café Add-on</span><span class="amt">₹10–15 / serve</span><div class="profit">↑ 5–6 serves</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Pudina Chutney (Frozen)</div>
+      <div class="card-note">Multi-use · 250g</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹109</span><span class="unit">per 250g</span></div>
+        <div class="cafe-block"><span class="lbl">Café Add-on</span><span class="amt">₹10–20 / serve</span><div class="profit">↑ 12–15 serves</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Flavour Powders</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Makhni Powder</div>
+      <div class="card-note">Mix 50g in 1kg mayonnaise</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹70</span><span class="unit">per 50g</span></div>
+        <div class="cafe-block"><span class="lbl">Menu Use</span><span class="amt">Flavour upgrade</span><div class="profit">↑ Menu differentiation</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Tandoori Powder</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹70</span><span class="unit">per 50g</span></div>
+        <div class="cafe-block"><span class="lbl">Menu Use</span><span class="amt">Flavour upgrade</span><div class="profit">↑ Menu differentiation</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Magic Masala Powder</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹70</span><span class="unit">per 50g</span></div>
+        <div class="cafe-block"><span class="lbl">Menu Use</span><span class="amt">Flavour upgrade</span><div class="profit">↑ Menu differentiation</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Cream &amp; Onion Powder</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹70</span><span class="unit">per 50g</span></div>
+        <div class="cafe-block"><span class="lbl">Menu Use</span><span class="amt">Flavour upgrade</span><div class="profit">↑ Menu differentiation</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Peri Peri Powder</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹70</span><span class="unit">per 50g</span></div>
+        <div class="cafe-block"><span class="lbl">Menu Use</span><span class="amt">Flavour upgrade</span><div class="profit">↑ Menu differentiation</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Flaming Hot Powder</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹70</span><span class="unit">per 50g</span></div>
+        <div class="cafe-block"><span class="lbl">Menu Use</span><span class="amt">Flavour upgrade</span><div class="profit">↑ Menu differentiation</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Barbeque Powder</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹70</span><span class="unit">per 50g</span></div>
+        <div class="cafe-block"><span class="lbl">Menu Use</span><span class="amt">Flavour upgrade</span><div class="profit">↑ Menu differentiation</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-label">Garlic Bread &amp; Loaf</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-name">Panini Loaf</div>
+      <div class="card-note">Ready with toppings &amp; cheese</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹21</span><span class="unit">per piece</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹50–70</span><div class="profit">↑ ₹29–49 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Plain Garlic Bread</div>
+      <div class="pack-tag">Pack of 2 pcs</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹45</span><span class="unit">per pack of 2</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹60–80 / serve</span><div class="profit">↑ ₹15–35 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Cheese Garlic Bread</div>
+      <div class="pack-tag">Pack of 2 pcs</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹77</span><span class="unit">per pack of 2</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹100–130 / serve</span><div class="profit">↑ ₹23–53 profit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-name">Cheese Chilly Toast</div>
+      <div class="pack-tag">Pack of 2 pcs</div>
+      <div class="price-row">
+        <div class="buy-block"><span class="lbl">Your Price</span><span class="amt">₹94</span><span class="unit">per pack of 2</span></div>
+        <div class="cafe-block"><span class="lbl">Café Sell Price</span><span class="amt">₹120–150 / serve</span><div class="profit">↑ ₹26–56 profit</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-title">Order Terms &amp; Conditions</div>
+    <div class="terms">
+      <div class="term">
+        <div class="term-icon"><i class="ti ti-shopping-cart" aria-hidden="true"></i></div>
+        <div class="term-text"><strong>Min. Order Value</strong><span>₹3,000 per order</span></div>
+      </div>
+      <div class="term">
+        <div class="term-icon"><i class="ti ti-tag" aria-hidden="true"></i></div>
+        <div class="term-text"><strong>5% Discount</strong><span>On orders above ₹6,000</span></div>
+      </div>
+      <div class="term">
+        <div class="term-icon"><i class="ti ti-discount-2" aria-hidden="true"></i></div>
+        <div class="term-text"><strong>8% Discount</strong><span>On orders above ₹10,000</span></div>
+      </div>
+      <div class="term">
+        <div class="term-icon"><i class="ti ti-truck" aria-hidden="true"></i></div>
+        <div class="term-text"><strong>Free Delivery</strong><span>On orders above ₹10,000</span></div>
+      </div>
+      <div class="term">
+        <div class="term-icon"><i class="ti ti-star" aria-hidden="true"></i></div>
+        <div class="term-text"><strong>New Partner Trial</strong><span>5 pcs Korean Pizza free on 1st order ₹4,000+</span></div>
+      </div>
+      <div class="term">
+        <div class="term-icon"><i class="ti ti-info-circle" aria-hidden="true"></i></div>
+        <div class="term-text"><strong>Prices Valid</strong><span>Subject to change without prior notice</span></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+</div>
